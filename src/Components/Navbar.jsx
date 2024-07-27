@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 import { SlEarphones } from "react-icons/sl";
@@ -6,6 +6,7 @@ import { UpdateFollower } from "react-mouse-follower";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
+  let [items, setItems] = useState(false);
   const NavbarMenu = [
     {
       id: 1,
@@ -33,6 +34,10 @@ const Navbar = () => {
       link: "/",
     },
   ];
+
+  let Handleitemsnav = () => {
+    setItems(!items);
+  };
   return (
     <motion.nav
       initial={{ opacity: 0 }}
@@ -89,7 +94,17 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="md:hidden ">
-            <CiMenuBurger className="text-4xl" />
+            <CiMenuBurger onClick={Handleitemsnav} className="text-4xl" />
+            {items && (
+              <div className="w-full h-[300px] bg-white absolute top-24 left-0 backdrop-blur-2xl">
+                <ul className="flex flex-col justify-center items-center space-y-1 mt-6 font-Varela">
+                  <li onClick={() => setItems(false)} className="text-black text-2xl font-normal">Home</li>
+                  <li onClick={() => setItems(false)}  className="text-black text-2xl font-normal">About</li>
+                  <li onClick={() => setItems(false)}  className="text-black text-2xl font-normal">Blog</li>
+                  <li onClick={() => setItems(false)}  className="text-black text-2xl font-normal">Contact</li>
+                </ul>
+              </div> 
+            )}
           </div>
         </div>
       </div>

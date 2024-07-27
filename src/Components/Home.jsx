@@ -17,7 +17,15 @@ const Home = () => {
         <Navbar />
       </UpdateFollower>
       <Outlet />
-      <Footer />
+      <UpdateFollower
+        mouseOptions={{
+          backgroundColor: "#FFCC00",
+          zIndex: 999,
+          followSpeed: 1.5,
+        }}
+      >
+        <Footer />
+      </UpdateFollower>
     </div>
   );
 };
